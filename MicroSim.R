@@ -1,14 +1,32 @@
-# Libraries
-library(shiny)
-library(shinyWidgets)
-library(shinycssloaders)
-library(shinydashboard)
-library(waiter)
-library(ggplot2)
-library(reshape2)
-library(ggsci)
-# library(thematic)
-# library(bslib)
+# Install and load Packages needed
+f_package_install <- function(...) {
+  libs <- unlist(list(...))
+  req <- unlist(lapply(libs, require, character.only = TRUE))
+  need <- libs[req == FALSE]
+  if (length(need) > 0) {
+    install.packages(need)
+    lapply(need, require, character.only = TRUE)
+  }
+}
+
+# Packages used
+package_list <- c('shiny','shinyWidgets','shinycssloaders','shinydashboard',
+                  'waiter','ggplot2','reshape2','ggsci')
+
+# install and load package
+f_package_install(package_list)
+
+# Load Libraries
+# library(shiny)
+# library(shinyWidgets)
+# library(shinycssloaders)
+# library(shinydashboard)
+# library(waiter)
+# library(ggplot2)
+# library(reshape2)
+# library(ggsci)
+# library(thematic) #not used
+# library(bslib) #not used
 
 # Define UI for application
 ui <- fluidPage(
